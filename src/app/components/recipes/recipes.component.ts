@@ -8,14 +8,14 @@ import { Recipe }                    from '../../shared/models/recipe.model';
   styleUrls   : [ './recipes.component.scss' ]
 })
 export class RecipesComponent implements OnInit {
-  @Output() currentRecipe : Recipe;
+  currentRecipe : Recipe;
 
   constructor() { }
 
   ngOnInit() : void {
   }
 
-  onRecipeItemSelected(recipe : Recipe) : void {
-    this.currentRecipe = recipe
+  onRecipeItemSelected( recipe : Recipe ) : void {
+    this.currentRecipe = recipe;
   }
 }
