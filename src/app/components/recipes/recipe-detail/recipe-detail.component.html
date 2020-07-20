@@ -5,17 +5,17 @@
   </div>
 </div>
 
-<!-- recipe name -->
-<div class="row">
-  <div class="col-xs-12">
-    <h1>{{recipe.name}}</h1>
-  </div>
-</div>
+<br>
 
-<!-- manage recipe dropdown -->
 <div class="row">
-  <div class="col-xs-12">
-    <div class="btn-group" appDropdown>
+  <!-- recipe name -->
+  <div class="col-xs-8">
+    <h1>{{ recipe.name }}</h1>
+  </div>
+
+  <!-- manage recipe dropdown -->
+  <div class="col-xs-4">
+    <div class="btn-group pull-right" style="margin-top: 20px" appDropdown>
       <button type="button" class="btn btn-primary dropdown-toggle">
         Manage Recipe <span class="caret"></span>
       </button>
@@ -28,6 +28,8 @@
   </div>
 </div>
 
+<hr>
+
 <!-- recipe description -->
 <div class="row">
   <div class="col-xs-12">
@@ -36,9 +38,32 @@
   </div>
 </div>
 
+<br>
+
 <!-- recipe ingredients -->
 <div class="row">
   <div class="col-xs-12">
-    <p>Ingredients</p>
+    <h4>Ingredients</h4>
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Ingredient</th>
+        <th>Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        href='#'
+        *ngFor="let ingredient of recipe.ingredients"
+      >
+        <td>
+          {{ ingredient.name }}
+        </td>
+        <td>
+          {{ ingredient.amount }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>

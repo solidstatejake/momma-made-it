@@ -1,5 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { Recipe }                    from '../../shared/models/recipe.model';
+import { Component, OnInit, Output, EventEmitter, Injectable } from '@angular/core';
+import { Recipe }                                              from '../../shared/models/recipe.model';
+import { RecipeService }                                       from '../../shared/services/recipe.service';
 
 
 @Component({
@@ -7,15 +8,18 @@ import { Recipe }                    from '../../shared/models/recipe.model';
   templateUrl : './recipes.component.html',
   styleUrls   : [ './recipes.component.scss' ]
 })
+@Injectable()
 export class RecipesComponent implements OnInit {
-  currentRecipe : Recipe;
+  // currentRecipe = new Recipe("duh", 'dont care', 'fu')
+  declare currentRecipe;
 
-  constructor() { }
+  constructor( private recipeService : RecipeService ) {}
 
   ngOnInit() : void {
+    this.recipeService.recipeSelected.subscribe(( recipe : Recipe ) => {
+      this.currentRecipe = recipe;
+    });
   }
 
-  onRecipeItemSelected( recipe : Recipe ) : void {
-    this.currentRecipe = recipe;
-  }
+  onRecipeSelected( recipe : Recipe ) : void { this.currentRecipe = recipe; }
 }

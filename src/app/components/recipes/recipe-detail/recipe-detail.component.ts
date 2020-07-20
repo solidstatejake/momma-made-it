@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Recipe }                   from '../../../shared/models/recipe.model';
+import { Component, Input, OnInit, EventEmitter, Injectable } from '@angular/core';
+import { RecipeService }                                      from '../../../shared/services/recipe.service';
+import { Recipe }                                 from '../../../shared/models/recipe.model';
 
 
 @Component({
@@ -7,12 +8,12 @@ import { Recipe }                   from '../../../shared/models/recipe.model';
   templateUrl : './recipe-detail.component.html',
   styleUrls   : [ './recipe-detail.component.scss' ]
 })
+@Injectable()
 export class RecipeDetailComponent implements OnInit {
   @Input() recipe : Recipe;
 
-  constructor() { }
+  constructor( ) {}
 
-  ngOnInit() : void {
-  }
+  ngOnInit() : void {}
 
 }
